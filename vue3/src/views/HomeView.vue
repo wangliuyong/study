@@ -5,7 +5,7 @@
     <div>y的坐标: {{ y }}</div>
 
     <div v-if="loading">loading....</div>
-    <img v-else :src="data" alt="data" srcset="" @click="getData" />
+    <img v-else :src="(data as string)" alt="data" srcset="" @click="getData" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import useMouse from "@/hooks/useMouse";
 import useAxios from "@/hooks/useAxios";
 const { x, y } = useMouse();
-const { loading, data, getData } = useAxios(
+const { loading, data, getData } = useAxios<string>(
   "https://dog.ceo/api/breeds/image/random"
 );
 

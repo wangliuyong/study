@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ref } from "vue";
 
-function useAxios(url: string) {
-  const data = ref("");
+function useAxios<T>(url: string) {
+  const data = ref<T | null>(null);
   const loading = ref(false);
   const error = ref(null);
 

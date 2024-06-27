@@ -9,10 +9,11 @@ function useAxios<T>(url: string) {
   const getData = () => {
     loading.value = true;
 
-    axios
+    return axios
       .get(url)
       .then((response) => {
         data.value = response.data.message;
+        return response;
       })
       .catch((err) => {
         error.value = err;

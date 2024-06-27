@@ -34,7 +34,13 @@ interface IFunc {
   (x: number, y?: string): number;
 }
 
+// 也可以使用类型别名描述函数
+type TFunc = <T = number>(x: T, y: T) => T;
+
 const func2: IFunc = (x, y): number => 0;
+const func2_1: TFunc = (x, y) => x;
+
+func2_1<number>(1, 2);
 
 // 联合类型
 const name8: number | string = 1;
@@ -91,7 +97,7 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
 
 // 范型在class中的使用
 class Queue<T> {
-  private data = [];
+  private data: T[] = [];
   push(item: T) {
     return this.data.push(item);
   }
@@ -113,3 +119,41 @@ interface KeyPair<T, U> {
 
 const kp1: KeyPair<number, string> = { key: 1, value: "1" };
 const kp2: KeyPair<string, number> = { key: "1", value: 1 };
+
+// 类型别名
+type FunType = (x: number, y: number) => number;
+
+const sum: FunType = (x, y) => x + y;
+
+sum(1, 2);
+
+// 交叉类型
+type Person1 = {
+  name: string;
+  age: number;
+} & {
+  gender: string;
+};
+
+const person1: Person1 = {
+  name: "1",
+  age: 1,
+  gender: "1",
+};
+
+// 内置类型
+// Partial
+// key可选;
+type TPartial = Partial<Person1>;
+
+const person2: TPartial = {
+  name: "1",
+};
+
+// Omit忽略某个属性
+type TPartial2 = Omit<Person1, "name">;
+const person3: TPartial2 = {
+  age: 1,
+  gender: "1",
+};
+//

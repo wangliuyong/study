@@ -1,11 +1,12 @@
-const Koa = require("koa");
+// const Koa = require("koa");
 
-const koaBody = require("koa-body");
-const cors = require("@koa/cors");
-const helmet = require("koa-helmet");
-const statics = require("koa-static");
-const path = require("path");
-const router = require("./routes");
+import Koa from "koa";
+import koaBody from "koa-body";
+import cors from "@koa/cors";
+import helmet from "koa-helmet";
+import statics from "koa-static";
+import path from "path";
+import router from "./routes";
 
 const app = new Koa();
 

@@ -1,9 +1,9 @@
 const Router = require("koa-router");
-const a = require("../api/a");
+import svgCaptcha from "../api/svgCaptcha";
 
 const router = new Router();
 router.prefix("/api");
 
-router.get("/a", a);
+router.get("/captcha", svgCaptcha.captcha);
 
 module.exports = router;

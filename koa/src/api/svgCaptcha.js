@@ -6,6 +6,7 @@ class SvgCaptcha {
     var captcha = svgCaptcha.create();
 
     ctx.body = {
+      status: true,
       code: 200,
       data: captcha.data,
     };

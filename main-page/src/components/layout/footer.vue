@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Phone } from "@element-plus/icons-vue";
 import { APP_KEY } from "@/config";
 import { inject } from "vue";
 

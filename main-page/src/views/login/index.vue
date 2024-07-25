@@ -1,4 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+import { get } from "@/utils/server";
+
+const captcha = ref("");
+
+const getCaptcha = () => {
+  get("/api/captcha").then((res) => {
+    console.log(res);
+    captcha.value = res.data;
+  });
+};
+
+getCaptcha();
+</script>
 
 <template>
   <div class="layui-container">
@@ -61,12 +76,12 @@
               </div>
             </div>
             <div class="layui-col-xs5">
-              <div style="margin-left: 10px">
-                <img
-                  src="https://www.oschina.net/action/user/captcha"
-                  onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();"
-                />
-              </div>
+              <div
+                style="margin-left: 10px"
+                v-html="captcha"
+                class="captcha-wrap"
+                @click="getCaptcha"
+              ></div>
             </div>
           </div>
         </div>
@@ -136,5 +151,11 @@
   margin: 0 2px;
   top: 2px;
   font-size: 26px;
+}
+
+.captcha-wrap {
+  svg {
+    height: 38px;
+  }
 }
 </style>

@@ -155,7 +155,7 @@ getCaptcha();
 
 .captcha-wrap {
   svg {
-    height: 38px;
+    // height: 38px;
   }
 }
 </style>

@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import * as path from "path";
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +13,13 @@ export default defineConfig({
       "@antv/x6": "@antv/x6/lib",
     },
   },
-  plugins: [vue(), AutoImport({}), Components({})],
+  plugins: [
+    vue(),
+    AutoImport({
+      imports: ["vue", "vue-router"],
+      dts: true,
+    }),
+  ],
   server: {
     proxy: {
       "/api": {

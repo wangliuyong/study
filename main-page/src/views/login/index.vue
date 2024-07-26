@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import { get } from "@/utils/server";
 
-const captcha = ref("");
+const captcha = ref<any>("");
 
 const getCaptcha = () => {
   get("/api/captcha").then((res) => {

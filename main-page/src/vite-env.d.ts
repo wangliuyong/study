@@ -7,3 +7,7 @@ declare module "*.vue" {
 
   export default vueComponent;
 }
+
+// declare module "vue";
+
+declare module "layui";
